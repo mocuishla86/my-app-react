@@ -1,10 +1,13 @@
 import React from "react";
 
 function App() {
+    const entries = [
+        {title: "title 1", content: "content 1"},
+        {title: "title 2", content: "content 2"},
+    ]
     return (
         <ul>
-            <li>Title 1 - Content 1</li>
-            <li>Title 2 - Content 2</li>
+            {entries.map(item => <li>{item.title} - {item.content}</li>)}
         </ul>
     );
 }
