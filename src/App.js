@@ -1,11 +1,17 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 
 
 function App() {
-    const [entries, setEntries] = useState([
-        {id: "id1", title: "title 1", content: "content 1"},
-        {id: "id2", title: "title 2", content: "content 2"},
-    ])
+    const [entries, setEntries] = useState([])
+
+    useEffect(() => {
+        const entriesFromBackEnd = [
+            {id: "id1", title: "title 1", content: "content 1"},
+            {id: "id2", title: "title 2", content: "content 2"},
+        ];
+        setEntries(entriesFromBackEnd)
+    }, [])
+
     const clear = () => {
         setEntries([])
     }
