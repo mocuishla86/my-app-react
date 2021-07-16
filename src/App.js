@@ -3,8 +3,8 @@ import React, {useState} from "react";
 
 function App() {
     const [entries, setEntries] = useState([
-        {title: "title 1", content: "content 1"},
-        {title: "title 2", content: "content 2"},
+        {id: "id1", title: "title 1", content: "content 1"},
+        {id: "id2", title: "title 2", content: "content 2"},
     ])
     const clear = () => {
         setEntries([])
@@ -12,7 +12,7 @@ function App() {
     return (
         <div>
             <ul>
-                {entries.map(item => <li>{item.title} - {item.content}</li>)}
+                {entries.map(item => <li key={item.id}>{item.title} - {item.content}</li>)}
             </ul>
             <button onClick={clear}>Clear</button>
         </div>
