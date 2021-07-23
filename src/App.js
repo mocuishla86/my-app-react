@@ -1,15 +1,20 @@
 import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 
 function App() {
     const [entries, setEntries] = useState([])
 
-    useEffect(() => {
-        const entriesFromBackEnd = [
-            {id: "id1", title: "title 1", content: "content 1"},
-            {id: "id2", title: "title 2", content: "content 2"},
-        ];
-        setEntries(entriesFromBackEnd)
+    useEffect( () => {
+        async function fetchData() {
+            // You can await here
+            const entriesResponse = await axios(
+                'http://localhost:8080/entries'
+            );
+            console.log(entriesResponse)
+            setEntries(entriesResponse.data)
+        }
+        fetchData();
     }, [])
 
     const clear = () => {
